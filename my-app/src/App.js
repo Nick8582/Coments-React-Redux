@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import { format } from 'date-fns'
+import advancedFormat from 'dayjs/plugin/advancedFormat'
+dayjs.extend(advancedFormat)
 
 class App extends Component {
   state = {
