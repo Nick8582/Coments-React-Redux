@@ -4,7 +4,6 @@ import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat'
 dayjs.extend(advancedFormat)
 
-const date = dayjs();
 class App extends Component {
   state = {
     comments: [],
@@ -54,12 +53,13 @@ class App extends Component {
       }
     })
   }
+  
 
   render() {
     return (
       <div className="App">
         {this.state.comments.map(comment => <div key={comment.id}>
-          <span style={{ fontStyle: 'italic' }}>{comment.id} - {date.format('DD-MM-YYYY')}: </span>
+          <span style={{ fontStyle: 'italic' }}>{comment.id} - {dayjs(comment.date).format('DD-MM-YYYY HH:mm:ss')}: </span>
           <strong>{comment.name}, </strong>
           <span>{comment.comment}</span>
           <button onClick={this.removeComment.bind(null, comment.id)}>Удалить комментарий</button>
