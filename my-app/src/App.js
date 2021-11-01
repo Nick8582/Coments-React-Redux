@@ -32,7 +32,7 @@ class App extends Component {
       ],
       from: {
         name: '',
-        comment: ''
+        comment: '',
       }
     }, () => localStorage.setItem('state', JSON.stringify(this.state)))
   }
@@ -43,7 +43,7 @@ class App extends Component {
       comments: this.state.comments.filter(comment => comment.id !== id)
     }, () => localStorage.setItem('state', JSON.stringify(this.state)))
   }
-  
+
   handleChange = (e) => {
     console.log(e.target.name)
     this.setState({
@@ -53,9 +53,18 @@ class App extends Component {
       }
     })
   }
-  
+
+  validation = () => {
+
+    if (this.state.from.name != '' && this.state.from.comment != '') {
+      return true
+    }
+
+    return false
+  }
 
   render() {
+
     return (
       <div className="App">
         {this.state.comments.map(comment => <div key={comment.id}>
@@ -69,16 +78,18 @@ class App extends Component {
             type="text"
             value={this.state.from.name}
             name="name"
-            onChange={this.handleChange}>
+            onChange={this.handleChange}
+            required>
           </input>
           </label>
           <label>Коментарии: <textarea
             name="comment"
             value={this.state.from.comment}
-            onChange={this.handleChange}>
+            onChange={this.handleChange}
+            required>
           </textarea>
           </label>
-          <button onClick={this.addComment}>Добавить коментарий</button>
+          <button onClick={this.addComment} disabled={!this.validation()}>Добавить коментарий</button>
         </div>
       </div>
     )
