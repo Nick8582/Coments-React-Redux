@@ -55,11 +55,9 @@ class App extends Component {
   }
 
   validation = () => {
-
     if (this.state.from.name != '' && this.state.from.comment != '') {
       return true
     }
-
     return false
   }
 
