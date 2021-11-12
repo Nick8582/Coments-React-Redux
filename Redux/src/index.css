@@ -1,0 +1,11 @@
+#root {
+    margin: 0 auto;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+}
+
+.commentContainer {
+    background-color: rgb(185, 185, 185);
+    padding: 20px;
+}
