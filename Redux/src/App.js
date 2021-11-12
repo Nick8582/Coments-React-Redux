@@ -1,41 +1,39 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React from 'react';
+import { connect } from 'react-redux';
 
-import CommentList from './components/index'
-import AddComment from './components/add-comment'
+import CommentList from './components/index';
+import AddComment from './components/add-comment';
 
-import { addComment, delComment } from './actions'
-  
+import { addComment,removeComment } from './actions/index';
 
-const App = (props) => {
-  const {
-    comments, addComment, delComment
-  } = props;
+let App = ({ comments, addComment, removeComment }) => {
 
   return (
     <div>
-      <h1>Коментарии на Redux</h1>
-      <CommentList comments={comments} delComment={delComment} />
-      <AddComment addComment={addComment} />
+      <CommentList comments={comments} removeComment={removeComment} />
+      <AddComment addComment={addComment}/>
     </div>
   )
 }
+
 const mapStateToProps = (state) => {
   return {
-    todo: state
+    comments: state
   }
 }
 
-const mapDispatchToProps = (state) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    addComment: (name) => dispatchEvent(addComment(name)),
-    delComment: (id) => dispatchEvent(delComment(id))
+    addComment: (name) => dispatch(addComment(name)),
+    removeComment: (id) => dispatch(removeComment(id))
   }
 }
+
+
 
 App = connect(
   mapStateToProps,
   mapDispatchToProps
-)
+)(App);
 
-export default App
+export default App;

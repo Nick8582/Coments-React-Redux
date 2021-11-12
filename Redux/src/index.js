@@ -15,7 +15,7 @@ import './index.css'
 
 
 const initialState = [
-    {id: 1, name: 'Иван', comment: 'Lorem lorem lorem' }
+    {id: 1, name: 'Иван', commentText: 'Lorem lorem lorem' }
 ]
 
 const store = createStore(

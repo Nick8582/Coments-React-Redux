@@ -1,27 +1,51 @@
-import React from "react";
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { addComment } from '../actions/index.js'
+import comments from '../reducers/index.js';
 
-const AddComment = ({addComment}) => {
+const AddComment = ({ addComment }) => {
+  const [name, setName] = useState('');
+  const [commentText, setComments] = useState('');
 
   return (
-    <div className="form">
-      <label>Имя:
+    <div>
+      <form>
+        <label htmlFor="username">Введите ваше имя:</label> <br />
         <input
           type="text"
-          name="name"
-          onChange={this.handleChange}
-          required>
-        </input>
-      </label>
-      <label>Коментарии:
+          id="username"
+          value={name}
+          onChange={ev => {
+            setName(ev.target.value)
+          }}
+        /> <br /><br />
+
+        <label htmlFor="usercomment">Введите ваш комментарий:</label> <br />
         <textarea
-          name="comment"
-          onChange={this.handleChange}
-          required>
-        </textarea>
-      </label>
-      <button onClick={addComment} disabled={!this.validation()}>Добавить коментарий</button>
+          id="usercomment"
+          rows="10"
+          cols="40"
+          value={commentText}
+          onChange={ev => {
+            setComments(ev.target.value)
+          }}
+        ></textarea> <br />
+      </form>
+      <button
+        className="btn"
+        onClick={ev => {
+          addComment(name, commentText);
+        }}
+      >
+        Добавить комментарий
+      </button>
     </div>
   )
 }
 
-export default AddComment;
+const mapDispatchToProps = {
+  addComment,
+}
+
+
+export default connect(null, mapDispatchToProps)(AddComment)

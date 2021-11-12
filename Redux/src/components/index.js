@@ -1,24 +1,32 @@
-import React from "react";
+import React from 'react';
+import { removeComment }  from '../actions/index';
 
-const CommentList = (props) => {
-  const { comments } = props;
+const CommentList = ({ comments, removeComment, name }) => {
 
   return (
-    <div>
-      <h1>Коментарии на Redux</h1>
-        {
-          comments.map(comment => {
-            return (
-              <div key={comment.id}>
-                <strong>{comment.name}</strong>
-                <p>{comment.comment}</p>
-                <button onClick={this.removeComment.bind(null, comment.id)}>Удалить комментарий</button>
-              </div>
-            )
-          })
-        }     
-    </div>
-  );
+        <ul>
+          {
+            comments.map((comment, index) => {
+              return (
+                <li key={index}>
+                  <b>
+                  {comment.name + ' (' + comment.commentText  + ')'}
+                  </b> <button
+                  className="btn-remove"
+                  onClick={ev => {
+                    removeComment(index)
+                  }}
+                  >
+                  X
+                  </button><br />
+
+                  </li>
+                )
+
+              })
+            }
+          </ul>
+  )
 }
 
 export default CommentList;

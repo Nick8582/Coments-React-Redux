@@ -1,16 +1,17 @@
 let nextCommentId = 2;
-
-export const addComment= (name) => {
+//action creators
+export const addComment = (name, commentText) => {
     return {
-        type: 'ADD_COMMENT',
-        id: nextCommentId++,
-        name,
+      type: 'ADD_COMMENT',
+      id: nextCommentId++,
+      name,
+      commentText
     }
-}
-
-export const delComment = (id) => {
+  }
+  
+  export const removeComment = (id) => {
     return {
-        type: 'DEL_COMMENT',
-        id
+      type: 'REMOVE_COMMENT',
+      id
     }
-}
+  }
