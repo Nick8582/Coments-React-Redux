@@ -1,5 +1,4 @@
 import React from 'react';
-import { removeComment }  from '../actions/index';
 
 const CommentList = ({ comments, removeComment, name }) => {
 
@@ -8,16 +7,20 @@ const CommentList = ({ comments, removeComment, name }) => {
           {
             comments.map((comment, index) => {
               return (
-                <li key={index}>
+                <li key={index} className="commentContainer">
                   <b>
-                  {comment.name + ' (' + comment.commentText  + ')'}
-                  </b> <button
+                  {comment.name}
+                  </b> 
+                  <p>
+                  {' "' + comment.commentText  + '"'}
+                  </p>
+                  <button
                   className="btn-remove"
                   onClick={ev => {
                     removeComment(index)
                   }}
                   >
-                  X
+                  Удалить
                   </button><br />
 
                   </li>

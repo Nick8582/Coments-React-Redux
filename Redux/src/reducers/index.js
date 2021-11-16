@@ -7,10 +7,10 @@ const comments = (state = [], action) => {
         id: action.id,
         name: action.name,
         commentText: action.commentText
-      }
+      } 
     ]
     case 'REMOVE_COMMENT':
-      return state.filter((id) => id !== action.id);
+      return state.filter((comment, id) => id !== action.id)
 
     default:
       return state
