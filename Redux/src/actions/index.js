@@ -3,7 +3,7 @@ let nextCommentId = 2;
 export const addComment = (name, commentText) => {
   return {
     type: 'ADD_COMMENT',
-    id: nextCommentId++,
+    id: nextCommentId++, 
     name,
     commentText
   }
