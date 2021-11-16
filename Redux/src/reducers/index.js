@@ -5,6 +5,7 @@ const comments = (state = [], action) => {
       ...state,
       {
         id: action.id,
+        date: new Date(),
         name: action.name,
         commentText: action.commentText
       } 
